@@ -1,10 +1,9 @@
-import { apiEndpoints } from './../../../../core/http/api.endpoints';
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Post } from '../../models/post';
+import { Observable } from 'rxjs';
 
-@Injectable()
+import { Post } from '../../models/post';
+import { apiEndpoints } from './../../../../core/http/api.endpoints';
+
 export class PostsService {
 
   constructor(private http: HttpClient) { }
