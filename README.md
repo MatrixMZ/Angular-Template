@@ -39,6 +39,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 			> If your component can be used in many modules is better to place it here.
 		- directives
 		- pipes
+    - models
+      > **Keep here only these models that are required to be used globally!**
 * assets
 	* sass
 	  > All of the styles that are used many times in application such as buttons or constants color variables.
