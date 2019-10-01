@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { ApiPathInterceptor } from './interceptors/api-path.interceptor';
+import { ApiPrefixInterceptor } from './interceptors/api-prefix.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ApiPathInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ]
 })

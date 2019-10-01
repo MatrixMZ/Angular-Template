@@ -1,11 +1,8 @@
-
-import { environment } from './../../../environments/environment';
-import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 
+import { environment } from './../../../environments/environment';
 
-@Injectable()
-export class ApiPathInterceptor implements HttpInterceptor {
+export class ApiPrefixInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
     console.log(environment.apiUrl + request.url);
