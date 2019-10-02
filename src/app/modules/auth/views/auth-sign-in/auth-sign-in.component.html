@@ -1,6 +1,12 @@
-<form [formGroup]="signInForm">
+<form [formGroup]="signInForm" (ngSubmit)="onSubmit()" >
   <input type="email" id="email" formControlName="email"><br>
+  <p *ngIf="!signInForm.get('email').valid && signInForm.get('email').touched">
+    Please enter a valid email!
+  </p>
   <input type="password" id="password" formControlName="password"><br>
-  <button type="submit">Log In</button>
+  <p *ngIf="!signInForm.get('password').valid && signInForm.get('password').touched">
+    Password is required!
+  </p>
+  <button type="submit" [disabled]="signInForm.valid">Log In</button>
 </form>
 

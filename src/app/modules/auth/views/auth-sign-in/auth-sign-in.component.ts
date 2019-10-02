@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-auth-sign-in',
@@ -13,9 +13,13 @@ export class AuthSignInComponent implements OnInit {
 
   ngOnInit() {
     this.signInForm = new FormGroup({
-      email: new FormControl(null),
-      password: new FormControl(null)
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, Validators.required)
     });
+  }
+
+  onSubmit(): void {
+    console.log(this.signInForm);
   }
 
 }
