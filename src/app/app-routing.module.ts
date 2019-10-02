@@ -1,10 +1,24 @@
-import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
+import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
+import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
+
 const routes: Routes = [
   {
+    path: 'auth',
+    data: { title: '' },
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
+      },
+    ]
+  },
+  {
     path: '',
+    pathMatch: 'full',
     data: { title: '' },
     component: MainLayoutComponent,
     children: [
@@ -15,18 +29,8 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'auth',
-    data: { title: '' },
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
-      },
-    ]
-  },
-  {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'auth/sign-in'
   }
 ];
 
